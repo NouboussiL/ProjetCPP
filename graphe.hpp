@@ -38,7 +38,6 @@ public:
 
 };
 
-//std :: ostream & operator << ( std:: ostream& ost, Graphe<Sommet,Poids> const &g);
 
 #endif //PROJET_GRAPHE_HPP
 

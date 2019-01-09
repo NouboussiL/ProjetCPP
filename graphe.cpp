@@ -5,12 +5,12 @@
 #include "graphe.hpp"
 
 
-template <class Sommet,class Poids>Graphe<Sommet,Poids>::Graphe(){
+template <class Sommet,class Poids>Graphe<Sommet,Poids>::Graphe() : orientation() {
     this->orientation=false;
 }
 
 
-template <class Sommet,class Poids>Graphe<Sommet,Poids>::Graphe(bool b){
+template <class Sommet,class Poids>Graphe<Sommet,Poids>::Graphe(bool b) : orientation() {
     this->orientation=b;
 }
 
@@ -80,6 +80,10 @@ template <class Sommet,class Poids> void Graphe<Sommet,Poids>::supprimer_Sommet(
         graphe.erase (it);
 }
 
+template <class Sommet, class Poids> vector<Sommet> Graphe<Sommet,Poids> ::get_Sommets() const {
+    return vector<Sommet>(0);
+}
+
 
 template <class Sommet,class Poids> void Graphe<Sommet,Poids>::supprimer_Arete(Sommet deb, Sommet fin, Poids poids){
 
@@ -88,7 +92,7 @@ template <class Sommet,class Poids> void Graphe<Sommet,Poids>::supprimer_Arete(S
 
     if(this->orientation){
 
-        for (it_vector = graphe[deb].begin() ; it_vector != graphe[deb].end() || existe; ++it_vector){
+        for (it_vector = graphe[deb].begin() ; it_vector != graphe[deb].end() || !existe; ++it_vector){
             if(it_vector == (pair<Sommet,Poids>(fin, poids)))
                 existe=true;
         }
@@ -97,7 +101,7 @@ template <class Sommet,class Poids> void Graphe<Sommet,Poids>::supprimer_Arete(S
             graphe[deb].erase(pair<Sommet,Poids>(fin, poids));
 
     }else{
-        for (it_vector = graphe[deb].begin() ; it_vector != graphe[deb].end() || existe; ++it_vector){
+        for (it_vector = graphe[deb].begin() ; it_vector != graphe[deb].end() || !existe; ++it_vector){
             if(it_vector == (pair<Sommet,Poids>(fin, poids)))
                 existe=true;
         }

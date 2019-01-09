@@ -26,7 +26,7 @@ public:
     Graphe(const Graphe &g);
     ~Graphe(){};
 
-    const vector<Sommet> get_Sommets() {};
+    vector<Sommet> get_Sommets() const;
 
     bool get_Orientation() const {return orientation;};
 
@@ -37,6 +37,8 @@ public:
 
 
 };
+
+template <class Sommet,class Poids> std :: ostream & operator << ( std:: ostream& ost, Graphe<Sommet,Poids> const &g);
 
 
 #endif //PROJET_GRAPHE_HPP

@@ -1,6 +1,13 @@
 #include <iostream>
+#include "Tas.hpp"
+#include "graphe.hpp"
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    Tas<int> *test = new Tas<int>();
+    cout << test ;
+    test->ajout_Element(2);
+
+    delete test;
+
     return 0;
 }

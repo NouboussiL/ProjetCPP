@@ -7,6 +7,7 @@
 
 #include <vector>
 #include <iostream>
+
 using namespace std;
 
 template <class T>class Tas {
@@ -30,7 +31,8 @@ template <class T>class Tas {
         T get_Minimum() const {
             if(tableau.size()!=0)
                 return tableau[0];
-            return NULL;
+            else
+                cout << "Arbre Vide" << endl;
         }
 
         void ajout_Element(T e){
@@ -40,7 +42,7 @@ template <class T>class Tas {
             if(taille!=1){
                 int indice_fils=taille-1;
                 int indice_pere=(indice_fils-1)/2;
-                while(indice_fils!=0 && tableau[indice_pere]<tableau[indice_fils]){
+                while(indice_fils!=0 && tableau[indice_pere]>tableau[indice_fils]){
                     echange=tableau[indice_fils];
                     tableau[indice_fils]=tableau[indice_pere];
                     tableau[indice_pere]=echange;
@@ -50,27 +52,28 @@ template <class T>class Tas {
             }
         }
 
-        T recherche_Element(T e){
+        bool recherche_Element(T e){
             typename vector<T>::iterator it;
-            it = this->tableau.find(e);
-            if(it != this->tableau.end())
-                return it;
-            return NULL;
+            for (it = this->tableau.begin() ; it < this->tableau.end() ; it ++){
+                if(*it==e){
+                    return true;
+                }
+            }
+            return false;
         }
 
-        friend std::ostream & operator << ( std:: ostream& ost, const Tas & tab){
+        void afficher (){
             typename vector<T>::iterator it;
-            if(tab.tableau.size()!=0){
-                for(it = tab.tableau.begin() ; it < tab.tableau.end() ; it ++){
-                    if(it != tab.tableau.end()-1) {
-                        ost << it << " ; ";
+            if(this->tableau.size()!=0){
+                for(it = this->tableau.begin() ; it < this->tableau.end() ; it ++){
+                    if(it != this->tableau.end()-1) {
+                        cout << *it << " ; ";
                     }else
-                        ost << it <<endl;
+                        cout << *it <<endl;
                 }
             }else{
-                ost << "Arbre Vide";
+                cout << "Arbre Vide" << endl;
             }
-            return ost;
         }
 
 };

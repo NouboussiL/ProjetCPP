@@ -3,4 +3,4 @@ project(Projet)
 
 set(CMAKE_CXX_STANDARD 98)
 
-add_executable(Projet main.cpp graphe.hpp Tas.hpp graphe.cpp Tas.cpp)
+add_executable(Projet main.cpp graphe.hpp Tas.hpp Tas_ID.hpp)
